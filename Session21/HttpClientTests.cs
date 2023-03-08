@@ -45,14 +45,14 @@ namespace Session21
 
             /*Test cleanup method or can be delete request is for deleting data created 
              * for testing to avoid overloading database of testdata during testing*/
-            /*[TestCleanup]
+            [TestCleanup]
             public async Task TestCleanUp()
             {
                 foreach (var data in cleanUpList)
                 {
                     var httpResponse = await httpClient.DeleteAsync(GetURL($"{UsersEndpoint}/{data.Id}"));
                 }
-            }*/
+            }
 
             [TestMethod]
             public async Task PutMethod()
@@ -148,18 +148,17 @@ namespace Session21
 
             #endregion
 
-            /*  #region cleanupdata
+              #region cleanupdata
 
               // Add data to cleanup list
               cleanUpList.Add(listUserData);
 
-              #endregion*/
+              #endregion
 
             #region assertion
 
             // Assertion
             Assert.AreEqual(HttpStatusCode.OK, statusCode, "Status code is not equal to 200");
-            // Assert.IsTrue(listUserData.Id == userData.Id);
             Assert.AreEqual(userData.Id, createdUserData, "id are not matching");
             Assert.AreEqual(userData.Name, UpdatedUserData, "Name are not matching");
             Assert.AreEqual(createdStatus, updatedStatus, "Status are not matching");
